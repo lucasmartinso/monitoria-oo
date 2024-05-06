@@ -1,24 +1,14 @@
 package org.example;
 
 public class Cliente extends Pessoa{
-    private Pessoa pessoa;
     private String telefone;
     private String cpf;
     private Endereco endereco;
 
-    public Cliente(Pessoa pessoa, String telefone, String cpf, Endereco endereco) {
-        this.setPessoa(pessoa);
+    public Cliente(String telefone, String cpf, Endereco endereco) {
         this.setTelefone(telefone);
         this.setCpf(cpf);
         this.setEndereco(endereco);
-    }
-
-    public Pessoa getPessoa() {
-        return pessoa;
-    }
-
-    public void setPessoa(Pessoa pessoa) {
-        this.pessoa = pessoa;
     }
 
     public String getTelefone() {
