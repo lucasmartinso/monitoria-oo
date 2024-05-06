@@ -12,7 +12,7 @@ public class Cliente extends Pessoa{
     }
 
     public String getTelefone() {
-        String telefoneFormatado += "(";
+        String telefoneFormatado = "(";
 
         for(int i=0; i<this.telefone.length(); i++) {
             telefoneFormatado += this.telefone.charAt(i);
