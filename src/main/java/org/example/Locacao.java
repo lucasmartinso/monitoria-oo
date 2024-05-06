@@ -7,12 +7,15 @@ public class Locacao {
     private Disco disco;
     private Integer notaAtendimento;
     private Integer notaFilme;
-    //private Datas dataRetirada;
-    //private Datas dataDevolucao;
+    private Datas dataRetirada;
+    private Datas dataDevolucao;
 
-    public Locacao(Cliente cliente, Disco disco) {
+    public Locacao(Cliente cliente, Disco disco, Datas dataRetirada, Datas dataDevolucao) {
         this.setCliente(cliente);
         this.setDisco(disco);
+        this.comparaDatas(dataRetirada,dataDevolucao);
+        this.setDataRetirada(dataRetirada);
+        this.setDataDevolucao(dataDevolucao);
     }
 
     public Cliente getCliente() {
@@ -53,5 +56,40 @@ public class Locacao {
         } else {
             throw new IllegalArgumentException("Nota tem que ser de 1 a 10");
         }
+    }
+
+    public String getDataRetirada() {
+        return dataRetirada.dataCompleta();
+    }
+
+    public void setDataRetirada(Datas dataRetirada) {
+        this.dataRetirada = dataRetirada;
+    }
+
+    public String getDataDevolucao() {
+        return dataDevolucao.dataCompleta();
+    }
+
+    public void setDataDevolucao(Datas dataDevolucao) {
+        this.dataDevolucao = dataDevolucao;
+    }
+
+    public void comparaDatas(Datas dataRetirada, Datas dataDevolucao) {
+        boolean cond = false;
+
+        if(dataDevolucao.getAno()>dataRetirada.getAno()) {
+            cond = true;
+        } else if(dataDevolucao.getAno()==dataRetirada.getAno()) {
+            if (dataDevolucao.getMes() > dataRetirada.getMes()) {
+                cond = true;
+            } else if (dataDevolucao.getMes() == dataRetirada.getMes()) {
+                if (dataDevolucao.getDia() >= dataRetirada.getDia()) {
+                    cond = true;
+                }
+            }
+        }
+
+       if(!cond)
+           throw new IllegalArgumentException("Data de devolucao tem que ser maior ou igual a data de Retirada");
     }
 }
