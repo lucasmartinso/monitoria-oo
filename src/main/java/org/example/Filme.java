@@ -34,7 +34,11 @@ public class Filme {
     }
 
     public void adicionaAtor(Ator ator) {
-        this.atores.add(ator);
+        if(!atores.contains(ator)) {
+            this.atores.add(ator);
+        } else {
+            throw new IllegalArgumentException("Ator ja esta na lista de integrantes do filme");
+        }
     }
 
     public Ator excluiAtor(Ator ator) {
