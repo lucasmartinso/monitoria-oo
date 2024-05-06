@@ -53,4 +53,9 @@ public class Filme {
     public ArrayList<Ator> listaAtores() {
         return atores;
     }
+
+    public boolean contemAtor(Ator ator) {
+        if(atores.contains(ator)) return true;
+        else return false;
+    }
 }

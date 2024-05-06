@@ -90,4 +90,18 @@ class FilmeTest {
             assertEquals("Ator ja esta na lista de integrantes do filme", e.getMessage());
         }
     }
+
+    @Test
+    void filmesAtor() {
+        Categoria categoria = new Categoria("Drama");
+        Pais pais = new Pais("Brasil");
+        Ator ator1 = new Ator(pais);
+        Ator ator2 = new Ator(pais);
+        Filme filme = new Filme("Thor", categoria);
+
+        filme.adicionaAtor(ator1);
+
+        assertEquals(true, filme.contemAtor(ator1));
+        assertEquals(false, filme.contemAtor(ator2));
+    }
 }
