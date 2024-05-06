@@ -12,19 +12,44 @@ public class Cliente extends Pessoa{
     }
 
     public String getTelefone() {
-        return telefone;
+        String telefoneFormatado += "(";
+
+        for(int i=0; i<this.telefone.length(); i++) {
+            telefoneFormatado += this.telefone.charAt(i);
+
+            if(i==1) telefoneFormatado += ")";
+        }
+
+        return telefoneFormatado;
     }
 
     public void setTelefone(String telefone) {
-        this.telefone = telefone;
+        if(telefone.length()==11) {
+            this.telefone = telefone;
+        } else {
+            throw new IllegalArgumentException("Telefone tem que ter 11 digitos");
+        }
     }
 
     public String getCpf() {
-        return cpf;
+        String cpfFormatado = "";
+
+        for(int i=0; i<this.cpf.length(); i++) {
+            cpfFormatado += this.cpf.charAt(i);
+
+            if(i==2 || i==5) cpfFormatado += ".";
+            else if(i==8) cpfFormatado += "-";
+        }
+
+        return cpfFormatado;
     }
 
     public void setCpf(String cpf) {
-        this.cpf = cpf;
+        if(cpf.length()==11) {
+            this.cpf = cpf;
+        } else {
+            throw new IllegalArgumentException("CPF tem que ter 11 digitos");
+        }
     }
 
     public Endereco getEndereco() {
