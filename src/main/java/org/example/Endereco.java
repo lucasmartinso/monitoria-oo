@@ -11,6 +11,11 @@ public class Endereco {
         this.setRua(rua);
     }
 
+    public Endereco(Integer numero, Rua rua) {
+        this.setNumero(numero);
+        this.setRua(rua);
+    }
+
     public Integer getNumero() {
         return numero;
     }
