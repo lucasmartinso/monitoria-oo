@@ -34,17 +34,4 @@ class DiscoTest {
 
         assertEquals(false, disco.isAlugado());
     }
-
-//    @Test
-//    void estaAlugado() {
-//        Categoria categoria = new Categoria("Drama");
-//        Pais pais = new Pais("Brasil");
-//        Ator ator = new Ator(pais);
-//        Filme filme = new Filme("Thor",categoria);
-//        filme.adicionaAtor(ator);
-//
-//        Disco disco = new Disco(1,"abcde",filme);
-//
-//        assertEquals(false, disco.isAlugado());
-//    }
 }

@@ -27,6 +27,7 @@ public class Locacao {
 
     public void setDisco(Disco disco) {
         this.disco = disco;
+        this.disco.setAlugado(true);
     }
 
     public Disco getDisco() {
@@ -78,16 +79,24 @@ public class Locacao {
     public void comparaDatas(Datas dataRetirada, Datas dataDevolucao) {
         if(dataDevolucao.getAno()>dataRetirada.getAno()) {
             return;
-        } else if(dataDevolucao.getAno()==dataRetirada.getAno()) {
+        } else if(dataDevolucao.getAno().equals(dataRetirada.getAno())) {
             if (dataDevolucao.getMes() > dataRetirada.getMes()) {
                 return;
-            } else if (dataDevolucao.getMes() == dataRetirada.getMes()) {
+            } else if (dataDevolucao.getMes().equals(dataRetirada.getMes())) {
                 if (dataDevolucao.getDia() >= dataRetirada.getDia()) {
                     return;
                 }
             }
+        } else {
+            throw new IllegalArgumentException("Data de devolucao tem que ser maior ou igual a data de Retirada");
         }
+    }
 
-        throw new IllegalArgumentException("Data de devolucao tem que ser maior ou igual a data de Retirada");
+    public void devolver() {
+        this.disco.setAlugado(false);
+    }
+
+    public float valorALuguel(Integer dias) {
+        return 2.5f*dias;
     }
 }
