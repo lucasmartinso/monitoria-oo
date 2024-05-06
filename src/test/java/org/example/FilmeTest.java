@@ -1,5 +1,7 @@
 package org.example;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -70,5 +72,22 @@ class FilmeTest {
             assertEquals("Esse ator não consta nesse filme",e.getMessage());
         }
 
+    }
+
+    @org.junit.jupiter.api.Test
+    void adicionaAtorRepetido() {
+        try {
+            Categoria categoria = new Categoria("Drama");
+            Pais brasil = new Pais("Brasil");
+            Pais portugal = new Pais("Portugal");
+            Ator ator1 = new Ator(brasil);
+            Filme filme = new Filme("Thor", categoria);
+
+            filme.adicionaAtor(ator1);
+            filme.adicionaAtor(ator1);
+            fail();
+        } catch (IllegalArgumentException e) {
+            assertEquals("Ator ja esta na lista de integrantes do filme", e.getMessage());
+        }
     }
 }
