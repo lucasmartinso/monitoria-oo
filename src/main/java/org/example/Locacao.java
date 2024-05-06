@@ -13,9 +13,8 @@ public class Locacao {
     public Locacao(Cliente cliente, Disco disco, Datas dataRetirada, Datas dataDevolucao) {
         this.setCliente(cliente);
         this.setDisco(disco);
-        this.comparaDatas(dataRetirada,dataDevolucao);
-        this.setDataRetirada(dataRetirada);
-        this.setDataDevolucao(dataDevolucao);
+        this.setDataRetirada(dataRetirada, dataDevolucao);
+        this.setDataDevolucao(dataRetirada, dataDevolucao);
     }
 
     public Cliente getCliente() {
@@ -62,7 +61,8 @@ public class Locacao {
         return dataRetirada.dataCompleta();
     }
 
-    public void setDataRetirada(Datas dataRetirada) {
+    public void setDataRetirada(Datas dataRetirada, Datas dataDevolucao) {
+        this.comparaDatas(dataRetirada,dataDevolucao);
         this.dataRetirada = dataRetirada;
     }
 
@@ -70,26 +70,24 @@ public class Locacao {
         return dataDevolucao.dataCompleta();
     }
 
-    public void setDataDevolucao(Datas dataDevolucao) {
+    public void setDataDevolucao(Datas dataRetirada,Datas dataDevolucao) {
+        this.comparaDatas(dataRetirada,dataDevolucao);
         this.dataDevolucao = dataDevolucao;
     }
 
     public void comparaDatas(Datas dataRetirada, Datas dataDevolucao) {
-        boolean cond = false;
-
         if(dataDevolucao.getAno()>dataRetirada.getAno()) {
-            cond = true;
+            return;
         } else if(dataDevolucao.getAno()==dataRetirada.getAno()) {
             if (dataDevolucao.getMes() > dataRetirada.getMes()) {
-                cond = true;
+                return;
             } else if (dataDevolucao.getMes() == dataRetirada.getMes()) {
                 if (dataDevolucao.getDia() >= dataRetirada.getDia()) {
-                    cond = true;
+                    return;
                 }
             }
         }
 
-       if(!cond)
-           throw new IllegalArgumentException("Data de devolucao tem que ser maior ou igual a data de Retirada");
+        throw new IllegalArgumentException("Data de devolucao tem que ser maior ou igual a data de Retirada");
     }
 }
