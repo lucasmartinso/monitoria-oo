@@ -2,11 +2,11 @@ package org.example;
 
 public class Rua {
     private String nome;
-    private Cidade cidade;
+    private Bairro bairro;
 
-    public Rua(String nome, Cidade cidade) {
+    public Rua(String nome, Bairro bairro) {
         this.setNome(nome);
-        this.setCidade(cidade);
+        this.setCidade(bairro);
     }
 
     public String getNome() {
@@ -17,7 +17,7 @@ public class Rua {
         this.nome = nome;
     }
 
-    public void setCidade(Cidade cidade) {
-        this.cidade = cidade;
+    public void setCidade(Bairro bairro) {
+        this.bairro = bairro;
     }
 }
