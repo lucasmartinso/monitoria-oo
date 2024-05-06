@@ -1,10 +1,9 @@
 package org.example;
 
 public interface DataEstilo {
-    void setDia(Integer dia);
-    void setMes(Integer mes);
-    void setAno(Integer ano);
+    void setData(Integer dia, Integer Mes, Integer Ano);
     Integer getDia();
     Integer getMes();
     Integer getAno();
+    String dataCompleta();
 }
