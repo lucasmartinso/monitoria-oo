@@ -5,9 +5,8 @@ public class Ator {
     private String codigoBarras;
     private Pais pais;
 
-    public Ator(Pessoa pessoa, String codigoBarras, Pais pais) {
+    public Ator(Pessoa pessoa, Pais pais) {
         this.setPessoa(pessoa);
-        this.setCodigoBarras(codigoBarras);
         this.setPais(pais);
     }
 
@@ -17,14 +16,6 @@ public class Ator {
 
     public void setPessoa(Pessoa pessoa) {
         this.pessoa = pessoa;
-    }
-
-    public String getCodigoBarras() {
-        return codigoBarras;
-    }
-
-    public void setCodigoBarras(String codigoBarras) {
-        this.codigoBarras = codigoBarras;
     }
 
     public Pais getPais() {
